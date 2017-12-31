@@ -29,6 +29,8 @@ namespace Dating.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("Default")));
 
             services.AddMvc();
+            // Allow Cors
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +40,9 @@ namespace Dating.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            // --setup Cors --  Before USEMVC
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            
             app.UseMvc();
         }
     }
