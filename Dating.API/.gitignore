@@ -2,3 +2,6 @@ bin
 obj
 .vscode
 *.db
+
+# dependencies
+/node_modules
