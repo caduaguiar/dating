@@ -1,8 +1,11 @@
+// Security
+import { AuthGuard } from './_guards/auth.guard';
+
+// Angular
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 
 // Componets
 import { AppComponent } from './app.component';
@@ -24,6 +27,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +48,8 @@ import { appRoutes } from './routes';
   ],
   providers: [
     AuthService,
-    AlertifyService
+    AlertifyService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
