@@ -36,12 +36,16 @@ namespace Dating.API
             // DbContext
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("Default")));
 
+            // Seed Database
+            services.AddTransient<Seed>();
+
             services.AddMvc();
             // Allow Cors
             services.AddCors();
 
             // Indepency Injection
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
 
             // Authenticatoin Schema
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
@@ -55,7 +59,7 @@ namespace Dating.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -73,6 +77,10 @@ namespace Dating.API
                     });
                 });
             }
+
+            // Seed Database
+            //seeder.SeedUsers();
+
             // --setup Cors --  Before USEMVC
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             
