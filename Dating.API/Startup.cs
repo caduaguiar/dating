@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Dating.API.Data;
 using Dating.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -39,13 +40,16 @@ namespace Dating.API
             // Seed Database
             services.AddTransient<Seed>();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             // Allow Cors
             services.AddCors();
 
             // Indepency Injection
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+
+            // AutoMapper
+            services.AddAutoMapper();
 
             // Authenticatoin Schema
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
