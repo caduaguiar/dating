@@ -7324,10 +7324,10 @@
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         "LICENSE.TXT",
-        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
-        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7627,7 +7627,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
+      "sha512": "9p5l1UqCCQCQI67eyp2BrlzuUrewC79ysSwGtdD7x3W/wMMGCdo6jgVbPyE3E3+/+7R5ftDdLVjirIbp1xVBfQ==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -12603,27 +12603,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cadu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Kadu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cadu\\Documents\\Projects\\DatingApp\\Dating.API\\Dating.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kadu\\Documents\\Projects\\DatingApp\\datingapp\\Dating.API\\Dating.API.csproj",
       "projectName": "Dating.API",
-      "projectPath": "C:\\Users\\Cadu\\Documents\\Projects\\DatingApp\\Dating.API\\Dating.API.csproj",
-      "packagesPath": "C:\\Users\\Cadu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cadu\\Documents\\Projects\\DatingApp\\Dating.API\\obj\\",
+      "projectPath": "C:\\Users\\Kadu\\Documents\\Projects\\DatingApp\\datingapp\\Dating.API\\Dating.API.csproj",
+      "packagesPath": "C:\\Users\\Kadu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kadu\\Documents\\Projects\\DatingApp\\datingapp\\Dating.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Cadu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Kadu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

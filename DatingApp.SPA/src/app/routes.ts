@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { HomeComponent } from './home/home.component';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 export const appRoutes: Routes = [
