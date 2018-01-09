@@ -8,3 +8,13 @@ C:\Users\Kadu\Documents\Projects\DatingApp\datingapp\Dating.API\obj\Debug\netcor
 C:\Users\Kadu\Documents\Projects\DatingApp\datingapp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.AssemblyInfo.cs
 C:\Users\Kadu\Documents\Projects\DatingApp\datingapp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.dll
 C:\Users\Kadu\Documents\Projects\DatingApp\datingapp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.pdb
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\bin\Debug\netcoreapp2.0\Dating.API.deps.json
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\bin\Debug\netcoreapp2.0\Dating.API.runtimeconfig.json
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\bin\Debug\netcoreapp2.0\Dating.API.runtimeconfig.dev.json
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\bin\Debug\netcoreapp2.0\Dating.API.dll
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\bin\Debug\netcoreapp2.0\Dating.API.pdb
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.csproj.CoreCompileInputs.cache
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.AssemblyInfoInputs.cache
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.AssemblyInfo.cs
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.dll
+C:\Users\Cadu\Documents\Projects\DatingApp\Dating.API\obj\Debug\netcoreapp2.0\Dating.API.pdb
