@@ -20,11 +20,16 @@ import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
 import { UserService } from './_services/user.service';
 
+// Resolver
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list-resolver';
+
 // Thred parties
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -53,12 +58,15 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    NgxGalleryModule,
     AuthModule
   ],
   providers: [
     AuthService,
     AlertifyService,
     UserService,
+    MemberDetailResolver,
+    MemberListResolver,
     AuthGuard
   ],
   bootstrap: [AppComponent]
