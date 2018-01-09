@@ -1,5 +1,6 @@
 // Security
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 // Angular
 import { HttpModule } from '@angular/http';
@@ -14,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 // Service
 import { AuthService } from './_services/auth.service';
@@ -23,6 +25,7 @@ import { UserService } from './_services/user.service';
 // Resolver
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list-resolver';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 // Thred parties
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
@@ -39,6 +42,7 @@ import { appRoutes } from './routes';
 import { AuthModule } from './auth/auth.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +53,8 @@ import { AuthModule } from './auth/auth.module';
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
 ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -67,6 +72,8 @@ import { AuthModule } from './auth/auth.module';
     UserService,
     MemberDetailResolver,
     MemberListResolver,
+    MemberEditResolver,
+    PreventUnsavedChanges,
     AuthGuard
   ],
   bootstrap: [AppComponent]
