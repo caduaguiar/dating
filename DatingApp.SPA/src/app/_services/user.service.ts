@@ -31,6 +31,10 @@ export class UserService {
         .catch(this.handlerError);
     }
 
+    updateUser(id: number, user: User) {
+      return this.authHttp.put(this.baseUrl + 'users/' + id, user).catch(this.handlerError);
+    }
+
     private handlerError(error: any) {
         const applicationError = error.headers.get('Application-Error');
 
