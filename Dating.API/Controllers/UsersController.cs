@@ -35,5 +35,14 @@ namespace Dating.API.Controllers {
 
             return Ok (userToReturn);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id){
+
+            if(! ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            
+        }
     }
 }
