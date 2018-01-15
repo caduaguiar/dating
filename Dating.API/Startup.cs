@@ -44,6 +44,9 @@ namespace Dating.API
             // Allow Cors
             services.AddCors();
 
+            //Cloudinary
+            services.Configure<CloudinarySetting>(Configuration.GetSection("CloudinarySettings"));
+
             // Indepency Injection
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
