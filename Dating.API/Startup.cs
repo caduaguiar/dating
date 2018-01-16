@@ -45,7 +45,7 @@ namespace Dating.API
             services.AddCors();
 
             //Cloudinary
-            services.Configure<CloudinarySetting>(Configuration.GetSection("CloudinarySettings"));
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
             // Indepency Injection
             services.AddScoped<IAuthRepository, AuthRepository>();

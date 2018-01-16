@@ -59,10 +59,10 @@ namespace Dating.API.Controllers {
             _mapper.Map(userForUpdateDto, userFromRepo);
 
             if(await _repo.SaveAll())
-                return NoContent();
+                return NoContent();           
+            }   
 
             throw new Exception($"Updating user {id} failed on save");
-            }   
         }
     }
 }
