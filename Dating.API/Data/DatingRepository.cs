@@ -11,6 +11,13 @@ namespace Dating.API.Data {
             _context = context;
 
         }
+
+        public Task<Photo> GetPhoto(int id)
+        {
+            var photo = _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
         void IDatingRepository.Add<T> (T entity) {
             _context.Add (entity);
         }

@@ -22,9 +22,13 @@ namespace Dating.API.Helpers {
                     opt.ResolveUsing (d => d.DateOfBirth.CalculateAge ());
                 });
 
-            CreateMap<Photo, PhotosForDetailedDto> ();
-
+            
             CreateMap<UserForUpdateDto, User>();
+
+            CreateMap<PhotoForCreationDto, Photo>();
+            
+            CreateMap<Photo, PhotoFromReturnDto>();
+            CreateMap<Photo, PhotosForDetailedDto> ();
         }
     }
 }
