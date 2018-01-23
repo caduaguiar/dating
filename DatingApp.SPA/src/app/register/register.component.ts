@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { error } from 'selenium-webdriver';
 import { AlertifyService } from '../_services/alertify.service';
-import { FormGroup, FormControl } from '@angular/forms/src/model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,10 +20,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      usersanem: new FormControl(),
-      password: new FormControl(),
-      confirmPassword: new FormControl()
-    })
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      confirmPassword: new FormControl('', Validators.required)
+    }, this.passwordMathValidator);
+  }
+
+  passwordMathValidator(p: FormGroup){
+    return p.get('password').value === p.get('confirmPassword').value ? null : {'mismatch': true};
   }
 
   register() {

@@ -3,24 +3,36 @@
   <h2 class="text-center text-primary">Sign Up</h2>
 
   <hr>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('username').errors && registerForm.get('username').touched  }">
     <input type="text" class="form-control" placeholder="Username" formControlName="username">
+    <span *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').touched">
+      Username is required
+    </span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('password').errors && registerForm.get('password').touched  }">
     <input type="password" class="form-control" placeholder="Password" formControlName="password">
+    <span *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
+      Password is required
+    </span>
+    <span *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">
+      Password must be at least 4 catactr
+    </span>
+    <span *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">
+      Password can`t excend 8 caract
+    </span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('confirmPassword').errors 
+    && registerForm.get('confirmPassword').touched || registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch') }">
     <input type="password" class="form-control" placeholder="Confirm password" formControlName="confirmPassword">
+    <span *ngIf="registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched">
+      Confirm password is required
+    </span>
+    <span *ngIf="registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')">
+      Confirm password must match password
+    </span>
   </div>
-
-  <!-- <div class="form-group">
-    <label for=""> Whats is your favourite value</label>
-    <select class="form-control" id="favouriteVaslue">
-      <option *ngFor="let value of valuesFromHome" [value]="value" > {{ value.name }} </option>
-    </select>
-  </div> -->
 
   <div class="form-group text-center">
     <button class="btn btn-success" type="submit">Register</button>
