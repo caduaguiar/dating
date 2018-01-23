@@ -35,6 +35,16 @@ export class UserService {
       return this.authHttp.put(this.baseUrl + 'users/' + id, user).catch(this.handlerError);
     }
 
+    setMainPhoto(userId: number, id: number){
+      return this.authHttp.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {})
+        .catch(this.handlerError);
+    }
+
+    deletePhoto(userId: number, id: number){
+      return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + id)
+        .catch(this.handlerError);
+    }
+
     private handlerError(error: any) {
         const applicationError = error.headers.get('Application-Error');
 

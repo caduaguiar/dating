@@ -6,7 +6,7 @@
       </h1>
     </div>
     <div class="col-sm-8">
-      <div  class="alert alert-info" >        
+      <div class="alert alert-info">
         <p>
           <strong>Information: </strong>
           You have made changes. Any unsaved changes will be lost!
@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="panel panel-default">
-          <img class="profile-image thumbnail" src="{{ user.photoUrl }}" alt="{{ user.knownAs }}">
+          <img class="profile-image thumbnail" src="{{ photoUrl }}" alt="{{ user.knownAs }}">
           <div class="panel-body">
             <div>
               <strong>
@@ -70,7 +70,7 @@
                 <h4>Looking For</h4>
                 <textarea name="lookingFor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
                 <h4>Interesrs</h4>
-                <textarea name="interesrs" rows="6" class="form-control" [(ngModel)]="user.interesrs"></textarea>
+                <textarea name="interesrs" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
                 <h4>Location Details: </h4>
                 <div class="form-inline">
                   <label for="city"> City</label>
@@ -82,9 +82,7 @@
               </form>
             </tab>
             <tab heading="Edit Photos">
-              <p>
-                Edit photos will go were
-              </p>
+              <app-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)" ></app-photo-editor>
             </tab>
           </tabset>
         </div>

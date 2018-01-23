@@ -6,7 +6,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Componets
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 // Service
 import { AuthService } from './_services/auth.service';
@@ -33,6 +34,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -40,8 +42,6 @@ import { appRoutes } from './routes';
 
 // Modules
 import { AuthModule } from './auth/auth.module';
-
-
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { AuthModule } from './auth/auth.module';
     MessagesComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
 ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -64,6 +65,8 @@ import { AuthModule } from './auth/auth.module';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     NgxGalleryModule,
+    FileUploadModule,
+    ReactiveFormsModule,
     AuthModule
   ],
   providers: [

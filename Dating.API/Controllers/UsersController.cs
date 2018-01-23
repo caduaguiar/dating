@@ -50,17 +50,17 @@ namespace Dating.API.Controllers {
 
             var userFromRepo = await _repo.GetUser(id);
 
-            if (userFromRepo == null) {
+            if (userFromRepo == null) 
                 return NotFound($"Could not find user with a ID of {id}");
-
-            if (currentUserId != userFromRepo.Id)
+             
+            if(currentUserId != userFromRepo.Id)
                 return Unauthorized();
             
             _mapper.Map(userForUpdateDto, userFromRepo);
 
             if(await _repo.SaveAll())
                 return NoContent();           
-            }   
+              
 
             throw new Exception($"Updating user {id} failed on save");
         }
