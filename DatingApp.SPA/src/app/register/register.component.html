@@ -3,10 +3,49 @@
   <h2 class="text-center text-primary">Sign Up</h2>
 
   <hr>
+
+  <div class="form-group">
+    <label class="control-label">I am a:</label>
+    <label class="radio-inline">
+      <input type="radio" value="male" formControlName="gender">Male
+    </label>
+    <label class="radio-inline">
+      <input type="radio" value="famele" formControlName="gender">Famele
+    </label>
+  </div>
+
   <div class="form-group" [ngClass]="{'has-error': registerForm.get('username').errors && registerForm.get('username').touched  }">
     <input type="text" class="form-control" placeholder="Username" formControlName="username">
     <span *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').touched">
       Username is required
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched  }">
+    <input type="text" class="form-control" placeholder="knownAs" formControlName="knownAs">
+    <span *ngIf="registerForm.get('knownAs').hasError('required') && registerForm.get('knownAs').touched">
+      knownAs is required
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched  }">
+    <input type="date" class="form-control" placeholder="dateOfBirth" formControlName="dateOfBirth">
+    <span *ngIf="registerForm.get('dateOfBirth').hasError('required') && registerForm.get('dateOfBirth').touched">
+      dateofBirth is required
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('city').errors && registerForm.get('city').touched  }">
+    <input type="text" class="form-control" placeholder="city" formControlName="city">
+    <span *ngIf="registerForm.get('city').hasError('required') && registerForm.get('city').touched">
+      city is required
+    </span>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': registerForm.get('country').errors && registerForm.get('country').touched  }">
+    <input type="text" class="form-control" placeholder="country" formControlName="country">
+    <span *ngIf="registerForm.get('country').hasError('required') && registerForm.get('country').touched">
+      country is required
     </span>
   </div>
 
@@ -35,7 +74,7 @@
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Register</button>
+    <button class="btn btn-success" [disabled]="!registerForm.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>
 </form>

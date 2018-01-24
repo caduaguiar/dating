@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { error } from 'selenium-webdriver';
 import { AlertifyService } from '../_services/alertify.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -16,18 +16,31 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegistered = new EventEmitter();
   registerForm: FormGroup
 
-  constructor(private authService: AuthService, private alertigy: AlertifyService) { }
+  constructor(
+    private authService: AuthService,
+    private alertigy: AlertifyService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
-      confirmPassword: new FormControl('', Validators.required)
-    }, this.passwordMathValidator);
+    this.createRegisterForm();
   }
 
-  passwordMathValidator(p: FormGroup){
-    return p.get('password').value === p.get('confirmPassword').value ? null : {'mismatch': true};
+  createRegisterForm() {
+    this.registerForm = this.fb.group({
+      gender:['male'],
+      username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: [null, Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+      password: ['', Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.passwordMathValidator });
+  }
+
+  passwordMathValidator(p: FormGroup) {
+    return p.get('password').value === p.get('confirmPassword').value ? null : { 'mismatch': true };
   }
 
   register() {
