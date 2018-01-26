@@ -3,6 +3,8 @@ import { AuthService } from '../_services/auth.service';
 import { error } from 'selenium-webdriver';
 import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { User } from '../_models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,15 +13,16 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 
-  model: any = {};
+  user: User;
   @Input() valuesFromHome: any;
   @Output() cancelRegistered = new EventEmitter();
-  registerForm: FormGroup
+  registerForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private alertigy: AlertifyService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -44,13 +47,19 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // this.authService.register(this.model).subscribe(() => {
-    //   this.alertigy.success('registrations sucessfull');
-    // // tslint:disable-next-line:no-shadowed-variable
-    // }, error => {
-    //   this.alertigy.error(error);
-    // });
-    console.log(this.registerForm.value)
+
+    if (this.registerForm.valid) {
+      this.user = Object.assign({}, this.registerForm.value);
+      this.authService.register(this.user).subscribe(() => {
+        this.alertigy.success('registrations sucessfull');
+      }, error => {
+          this.alertigy.error(error);
+        }, () => {
+          this.authService.login(this.user).subscribe(() => {
+            this.router.navigate(['/members'])
+          });
+        });
+    }
   }
 
   cancel() {

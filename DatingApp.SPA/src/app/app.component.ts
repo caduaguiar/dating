@@ -11,8 +11,8 @@ import { User } from './_models/User';
 })
 export class AppComponent implements OnInit {
 
-  title = ' dating app';
-  jwtHelper:JwtHelper = new JwtHelper();
+  title = 'dating app';
+  jwtHelper: JwtHelper = new JwtHelper();
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -22,13 +22,15 @@ export class AppComponent implements OnInit {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
 
-    if(user){
+    if (user) {
       this.authService.currentUser = user;
-      this.authService.changeMemberPhoto(user.photoUrl);
+      if (this.authService.currentUser.photoUrl !== null) {
+        this.authService.changeMemberPhoto(user.photoUrl);
+      }else {
+        this.authService.changeMemberPhoto('../assets/user.png');
+      }
     }
-
   }
-
 
   constructor(private authService: AuthService) {}
 }
