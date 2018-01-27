@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { error } from 'selenium-webdriver';
 import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.config';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +11,10 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  model: any = {};
-  @Input() valuesFromHome: any;
   @Output() cancelRegistered = new EventEmitter();
+  model: any = {};
   registerForm: FormGroup
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(
     private authService: AuthService,
@@ -23,12 +23,15 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.bsConfig = {
+      containerClass: 'theme-red'
+    }
     this.createRegisterForm();
   }
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      gender:['male'],
+      gender: ['male'],
       username: ['', Validators.required],
       knownAs: ['', Validators.required],
       dateOfBirth: [null, Validators.required],
