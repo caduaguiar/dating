@@ -43,7 +43,7 @@ export class PhotoEditorComponent implements OnInit {
     });
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
-      if(response) {
+      if (response) {
         const res: Photo = JSON.parse(response);
         const photo = {
           id: res.id,
@@ -51,10 +51,15 @@ export class PhotoEditorComponent implements OnInit {
           dateAdded: res.dateAdded,
           description: res.description,
           isMain: res.isMain
-        }
+        };
         this.photos.push(photo);
-      };
-    }
+        if (photo.isMain) {
+          this.authService.changeMemberPhoto(photo.url);
+          this.authService.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+        }
+      }
+    };
   }
 
 
@@ -68,7 +73,7 @@ export class PhotoEditorComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     }, error => {
       this.alertify.error(error);
-    })
+    });
   }
 
   deletePhoto(id: number){

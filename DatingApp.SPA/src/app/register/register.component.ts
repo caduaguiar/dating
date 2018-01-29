@@ -4,6 +4,8 @@ import { error } from 'selenium-webdriver';
 import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.config';
+import { User } from '../_models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,15 +13,18 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.confi
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   @Output() cancelRegistered = new EventEmitter();
   model: any = {};
   registerForm: FormGroup
   bsConfig: Partial<BsDatepickerConfig>;
+  user: User;
 
   constructor(
     private authService: AuthService,
     private alertigy: AlertifyService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,13 +52,19 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // this.authService.register(this.model).subscribe(() => {
-    //   this.alertigy.success('registrations sucessfull');
-    // // tslint:disable-next-line:no-shadowed-variable
-    // }, error => {
-    //   this.alertigy.error(error);
-    // });
-    console.log(this.registerForm.value)
+
+    if (this.registerForm.valid) {
+      this.user = Object.assign({}, this.registerForm.value);
+      this.authService.register(this.user).subscribe(() => {
+        this.alertigy.success('registrations sucessfull');
+      }, error => {
+          this.alertigy.error(error);
+        }, () => {
+          this.authService.login(this.user).subscribe(() => {
+            this.router.navigate(['/members'])
+          });
+        });
+    }
   }
 
   cancel() {

@@ -15,9 +15,9 @@ export class AuthService {
   baseUrl = 'http://localhost:5000/api/auth/';
   userToken: any;
   decodedToken: any;
-  currentUser: User
+  currentUser: User;
   jwtHelper: JwtHelper = new JwtHelper();
-  private photoUrl = new BehaviorSubject<string>('../../assests/user.png')
+  private photoUrl = new BehaviorSubject<string>('../../assests/user.png');
   currentPhotoUrl = this.photoUrl.asObservable();
 
   constructor(private http: Http) {}
@@ -37,15 +37,19 @@ export class AuthService {
           this.userToken = user.tokenString;
           this.decodedToken = this.jwtHelper.decodeToken(user.tokenString);
           this.currentUser = user.user;
-          this.changeMemberPhoto(this.currentUser.photoUrl);
+          if (this.currentUser.photoUrl !== null) {
+            this.changeMemberPhoto(this.currentUser.photoUrl);
+          }else {
+            this.changeMemberPhoto('../../assests/user.png');
+          }
         }
       })
       .catch(this.handlerError);
   }
 
-  register(model: any) {
+  register(user: User) {
     return this.http
-      .post(this.baseUrl + 'register', model, this.requestOptions())
+      .post(this.baseUrl + 'register', user, this.requestOptions())
       .catch(this.handlerError);
   }
 

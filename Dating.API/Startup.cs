@@ -54,6 +54,9 @@ namespace Dating.API
             // AutoMapper
             services.AddAutoMapper();
 
+            //Filter
+            services.AddScoped<LogUserActivity>();
+
             // Authenticatoin Schema
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters{

@@ -1,14 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dating.API.Helpers;
 using Dating.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dating.API.Data {
-    public class DatingRepository : IDatingRepository {
+namespace Dating.API.Data
+{
+    public class DatingRepository : IDatingRepository
+    {
         private readonly DataContext _context;
 
-        public DatingRepository (DataContext context) {
+        public DatingRepository(DataContext context)
+        {
             _context = context;
 
         }
@@ -24,25 +28,35 @@ namespace Dating.API.Data {
             return photo;
         }
 
-        void IDatingRepository.Add<T> (T entity) {
-            _context.Add (entity);
+        void IDatingRepository.Add<T>(T entity)
+        {
+            _context.Add(entity);
         }
 
-        void IDatingRepository.Delete<T> (T entity) {
-            _context.Remove (entity);
+        void IDatingRepository.Delete<T>(T entity)
+        {
+            _context.Remove(entity);
         }
 
-        async Task<User> IDatingRepository.GetUser (int id) {
-            var user = await _context.Users.Include (p => p.Photos).FirstOrDefaultAsync (x => x.Id == id);
+        public async Task<User> GetUser(int id)
+        {
+            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.Id == id);
             return user;
         }
 
-        async Task<IEnumerable<User>> IDatingRepository.GetUsers () {
-            var users = await _context.Users.Include (p => p.Photos).ToListAsync ();
-            return users;
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
+        {
+            var users = _context.Users.Include(p => p.Photos).AsQueryable();
+
+            users = users.Where(u => u.Id != userParams.UserId);
+
+            users = users.Where(u => u.Gender == userParams.Gender);
+
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
-        async Task<bool> IDatingRepository.SaveAll () {
+        public async Task<bool> SaveAll()
+        {
             return await _context.SaveChangesAsync() > 0;
         }
     }

@@ -35,6 +35,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe'
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -42,6 +43,7 @@ import { appRoutes } from './routes';
 
 // Modules
 import { AuthModule } from './auth/auth.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -55,8 +57,9 @@ import { AuthModule } from './auth/auth.module';
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
-],
+    PhotoEditorComponent,
+    TimeAgoPipe
+  ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
@@ -65,6 +68,7 @@ import { AuthModule } from './auth/auth.module';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     ReactiveFormsModule,
