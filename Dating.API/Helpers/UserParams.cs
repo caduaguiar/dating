@@ -7,8 +7,11 @@ namespace Dating.API.Helpers
         private int pageSize = 10;
         public int UserId { get; set; }
         public string Gender { get; set; }
-        
 
+        public int MinAge { get; set; } = 18;
+        public int MaxAge { get; set; } = 99;
+        
+        
         public int PageSize
         {
             get { return pageSize; }
