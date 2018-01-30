@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private authHttp: AuthHttp) { }
 
-  getUsers(page?: number, itemsPerPage?: number, userParams?: any) {    
+  getUsers(page?: number, itemsPerPage?: number, userParams?: any) {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
     let queryString = '?';
 
@@ -67,6 +67,10 @@ export class UserService {
   deletePhoto(userId: number, id: number) {
     return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + id)
       .catch(this.handlerError);
+  }
+
+  sendLike(userId: number, recipientId: number){
+    return this.authHttp.post(this.baseUrl + 'users/' + userId + '/like/' + recipientId, {}).catch(this.handlerError);
   }
 
   private handlerError(error: any) {
