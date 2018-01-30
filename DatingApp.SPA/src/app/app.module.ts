@@ -44,6 +44,7 @@ import { appRoutes } from './routes';
 // Modules
 import { AuthModule } from './auth/auth.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
+import { ButtonsModule } from 'ngx-bootstrap/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     ReactiveFormsModule,

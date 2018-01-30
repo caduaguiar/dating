@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private authHttp: AuthHttp) { }
 
-  getUsers(page?: number, itemsPerPage?: number, userParams?: any) {
+  getUsers(page?: number, itemsPerPage?: number, userParams?: any) {    
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
     let queryString = '?';
 
@@ -29,8 +29,9 @@ export class UserService {
     if (userParams != null) {
       queryString +=
       'minAge=' + userParams.minAge +
-      '&maxAge' + userParams.maxAge +
-      '&gender' + userParams.gender;
+      '&maxAge=' + userParams.maxAge +
+      '&gender=' + userParams.gender +
+      '&orderBy=' + userParams.orderBy;
     }
 
     return this.authHttp
