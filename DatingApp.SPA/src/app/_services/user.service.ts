@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private authHttp: AuthHttp) { }
 
-  getUsers(page?: number, itemsPerPage?: number, userParams?: any) {
+  getUsers(page?: number, itemsPerPage?: number, userParams?: any, likeParam?: string) {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
     let queryString = '?';
 
@@ -26,6 +26,14 @@ export class UserService {
       queryString += 'pageNumber=' + page + '&pageSize=' + itemsPerPage + '&';
     }
 
+    if(likeParam === 'Likers'){
+      queryString += 'Likers=true&';
+    }
+
+    if(likeParam === 'Likees'){
+      queryString += 'Likees=true&';
+    }
+    
     if (userParams != null) {
       queryString +=
       'minAge=' + userParams.minAge +
@@ -74,6 +82,10 @@ export class UserService {
   }
 
   private handlerError(error: any) {
+
+    if(error.status == 400){
+      return Observable.throw(error._body);
+    }
     const applicationError = error.headers.get('Application-Error');
 
     if (applicationError) {

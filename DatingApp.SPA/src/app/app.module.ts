@@ -27,6 +27,7 @@ import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list-resolver';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { ListResolver } from './_resolvers/list.resolver';
 
 // Thred parties
 import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
@@ -36,6 +37,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe } from 'time-ago-pipe'
+import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
+import { ButtonsModule } from 'ngx-bootstrap/buttons/buttons.module';
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -43,8 +46,7 @@ import { appRoutes } from './routes';
 
 // Modules
 import { AuthModule } from './auth/auth.module';
-import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
-import { ButtonsModule } from 'ngx-bootstrap/buttons/buttons.module';
+
 
 @NgModule({
   declarations: [
@@ -83,6 +85,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons/buttons.module';
     MemberDetailResolver,
     MemberListResolver,
     MemberEditResolver,
+    ListResolver,
     PreventUnsavedChanges,
     AuthGuard
   ],
