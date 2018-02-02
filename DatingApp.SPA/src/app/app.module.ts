@@ -28,6 +28,7 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list-resolver';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { ListResolver } from './_resolvers/list.resolver';
+import { MessagesResolver } from './_resolvers/message.resolver';
 
 // Thred parties
 import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
@@ -86,6 +87,7 @@ import { AuthModule } from './auth/auth.module';
     MemberListResolver,
     MemberEditResolver,
     ListResolver,
+    MessagesResolver,
     PreventUnsavedChanges,
     AuthGuard
   ],
