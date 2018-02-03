@@ -100,6 +100,26 @@ export class UserService {
         return paginatedResult;
       }).catch(this.handlerError);
   }
+
+  getMessageThread(id: number, recipientId: number){
+    return this.authHttp.get(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId).map((response: Response) => {
+      return response.json();
+    }).catch(this.handlerError);
+  }
+
+  sendMessage(id: number, message: Message){
+    return this.authHttp.post(this.baseUrl + 'users/' + id + '/messages', message).map((response: Response) => {
+      return response.json();
+    })
+  }
+
+  deleteMessage(id: number, userId: number){
+    return this.authHttp.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {}).map(response => {}).catch(this.handlerError);
+  }
+
+  markAsRead(userId: number, messageId: number){
+    return this.authHttp.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {}).subscribe();
+  }
   
 
   private handlerError(error: any) {
